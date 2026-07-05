@@ -26,7 +26,7 @@ async def register_user(user_id: int):
         await db.execute("INSERT OR IGNORE INTO users (user_id) VALUES (?)", (user_id,))
         await db.commit()
 
-async def save_placeholder_log(user_id: int, dimensions: TEXT, bg_color: TEXT, text_content: TEXT):
+async def save_placeholder_log(user_id: int, dimensions: str, bg_color: str, text_content: str):
     async with aiosqlite.connect(DB_NAME) as db:
         await db.execute(
             "INSERT INTO history (user_id, dimensions, bg_color, text_content) VALUES (?, ?, ?, ?)",
